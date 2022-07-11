@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var counter: ObservableInt
+    var incrementCounter: ([Value]) -> Void = { _ in }
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack{
+            Text("Counter: \(counter.value ?? 0)")
+                .padding()
+            Button("Increment Counter") {
+                incrementCounter([1])
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(counter: ObservableInt())
     }
 }

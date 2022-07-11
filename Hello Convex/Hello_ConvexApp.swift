@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Hello_ConvexApp: App {
+    @StateObject var counter = useQuery("getCounter");
+    var incrementCounter = useMutation("incrementCounter");
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(counter: counter, incrementCounter: incrementCounter)
         }
     }
 }
